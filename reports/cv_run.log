@@ -1,0 +1,55 @@
+﻿Dati di sviluppo: 42,309 match, 2003-2018
+(valid e test restano intoccati)
+
+11 modelli x 32 fold (rolling-origin)
+
+  Logistic (L2)          acc=69.25%  logloss=0.5777  auc=0.7649  [  5.9s]
+  Logistic (L1)          acc=69.33%  logloss=0.5775  auc=0.7650  [ 16.4s]
+  Naive Bayes            acc=68.44%  logloss=2.0265  auc=0.7503  [  5.1s]
+  k-NN (k=100)           acc=68.81%  logloss=0.5855  auc=0.7560  [  5.9s]
+  Decision Tree          acc=68.53%  logloss=0.5932  auc=0.7533  [ 13.5s]
+  Random Forest          acc=69.22%  logloss=0.5781  auc=0.7633  [ 44.2s]
+  AdaBoost               acc=68.95%  logloss=0.5946  auc=0.7593  [404.5s]
+  Gradient Boosting      acc=69.51%  logloss=0.5771  auc=0.7648  [ 15.6s]
+  SVM lineare            acc=69.26%  logloss=0.5776  auc=0.7648  [ 17.0s]
+  SVM RBF                acc=69.29%  logloss=0.5972  auc=0.7452  [371.1s]
+  Feed-forward NN (64,32) acc=69.24%  logloss=0.5813  auc=0.7616  [ 51.7s]
+
+  modello                        accuracy          log-loss       auc
+  ----------------------------------------------------------------------
+  Gradient Boosting        69.51% +-2.32     0.5771 +-0.0236   0.7648
+  Logistic (L1)            69.33% +-2.49     0.5775 +-0.0249   0.7650
+  SVM lineare              69.26% +-2.43     0.5776 +-0.0248   0.7648
+  Logistic (L2)            69.25% +-2.47     0.5777 +-0.0250   0.7649
+  Random Forest            69.22% +-2.37     0.5781 +-0.0233   0.7633
+  Feed-forward NN (64,32)   69.24% +-2.28     0.5813 +-0.0255   0.7616
+  k-NN (k=100)             68.81% +-2.23     0.5855 +-0.0213   0.7560
+  Elo (baseline)           68.92% +-2.35     0.5864 +-0.0270   0.7558
+  Decision Tree            68.53% +-2.19     0.5932 +-0.0251   0.7533
+  AdaBoost                 68.95% +-2.25     0.5946 +-0.0176   0.7593
+  SVM RBF                  69.29% +-2.38     0.5972 +-0.0229   0.7452
+  Naive Bayes              68.44% +-2.68     2.0265 +-0.2125   0.7503
+
+  (media +- deviazione standard sui fold; ordinati per log-loss)
+
+Differenze appaiate sui fold - 'Gradient Boosting' contro gli altri (metrica: log_loss)
+  avversario              differenza                 IC 95%
+  ------------------------------------------------------------
+  Logistic (L1)              +0.0004   [-0.0010, +0.0018]
+  SVM lineare                +0.0005   [-0.0009, +0.0018]
+  Logistic (L2)              +0.0005   [-0.0009, +0.0020]
+  Random Forest              +0.0010   [-0.0000, +0.0021]
+  Feed-forward NN (64,32)     +0.0042   [+0.0014, +0.0070]
+  k-NN (k=100)               +0.0084   [+0.0064, +0.0104]
+  Elo (baseline)             +0.0093   [+0.0068, +0.0117]
+  Decision Tree              +0.0160   [+0.0119, +0.0201]
+  AdaBoost                   +0.0174   [+0.0148, +0.0200]
+  SVM RBF                    +0.0200   [+0.0168, +0.0233]
+  Naive Bayes                +1.4494   [+1.3800, +1.5188]
+
+  4 modelli hanno un intervallo che contiene lo zero: la differenza
+  dal riferimento e' al piu' 0.0021, contro i 0.0093 che lo separano dall'Elo.
+  Fold dipendenti fra loro (finestre espansive): gli intervalli sono leggermente
+  piu' stretti del dovuto.
+
+Risultati in reports/cv_results.csv

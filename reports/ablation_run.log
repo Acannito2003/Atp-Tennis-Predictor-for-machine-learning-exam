@@ -1,0 +1,33 @@
+﻿Modello: Gradient Boosting | 32 fold | 38 feature
+
+  completo                    [ 13.2s]
+  Elo                        [ 18.1s]
+  Ranking ATP                [ 17.9s]
+  Forma recente              [ 20.9s]
+  Carico e riposo            [ 25.1s]
+  Infortuni                  [ 22.8s]
+  Tecnica                    [ 22.9s]
+  Head-to-head               [ 19.0s]
+  Anagrafica                 [ 17.0s]
+  Contesto                   [ 15.3s]
+
+============================================================================
+ABLATION - log-loss del modello completo: 0.5771
+============================================================================
+  blocco                 danno                IC 95%      solo  acc solo
+  --------------------------------------------------------------------------
+  Elo                  +0.0049 * [+0.0032, +0.0065]    0.5869    68.71%
+  Anagrafica           +0.0025 * [+0.0014, +0.0036]    0.6918    51.81%
+  Forma recente        +0.0020 * [+0.0007, +0.0033]    0.5964    67.94%
+  Ranking ATP          +0.0014 * [+0.0001, +0.0028]    0.6050    66.84%
+  Tecnica              +0.0013 * [+0.0001, +0.0025]    0.6216    65.24%
+  Carico e riposo      +0.0013 * [+0.0005, +0.0021]    0.6496    62.29%
+  Contesto             +0.0006   [-0.0000, +0.0013]    0.6934    49.96%
+  Infortuni            +0.0004   [-0.0004, +0.0012]    0.6813    56.10%
+  Head-to-head         +0.0000   [-0.0005, +0.0006]    0.6698    57.09%
+
+  'danno' = quanto peggiora la log-loss togliendo il blocco
+  '*'     = l'intervallo esclude lo zero
+  'solo'  = log-loss usando esclusivamente quel blocco
+
+Risultati in reports/ablation_results.csv
